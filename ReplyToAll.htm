@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Reply To All</title>
+        <style type="text/css">
+pre {
+    border: 2px solid gray;
+    padding: 1px;
+    padding-left: 5px;
+    margin-left: 10px;
+    background-color: #eee;
+}
+
+pre.define {
+    background-color: #ffb;
+    border-color: #cc0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: serif;
+}
+
+h1 {
+    color: rgb(23,54,93);
+    border-bottom: 1px solid rgb(79,129,189);
+    padding-bottom: 2px;
+    font-variant: small-caps;
+    text-align: center;
+}
+
+a {
+    color: rgb(54,95,145);
+}
+
+h2 {
+    color: rgb(54,95,145);
+}
+
+h3 {
+    color: rgb(79,129,189);
+}
+
+.menu {
+	background-color: #ccc;
+	display: inline;
+}
+
+        </style>
+    </head>
+    <body>
+
+<h1>Reply To All</h1>
+
+<p style="text-align:right;margin-bottom:25px;">
+    by <a href="http://community.haskell.org/~ndm/">Neil Mitchell</a>
+</p>
+
+<p style="margin-left:10%;margin-right:10%;margin-bottom:25px;text-align:justify;">
+    Some companies lock down the use of Outlook by disabling the Reply To All button. This makes it harder to manage email, and requires manually copying email addresses to get the same effect. But using a bit of Office VBA, it is possible to make a functioning Reply To All button. The following solution has been tested in Outlook 2003 and 2007, but should work for other versions of Outlook as well.
+</p>
+<h3>Step 1: Reduce your Outlook security settings</h3>
+<p>
+	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Security...</span>. On the dialog box, select Medium or Low security.
+</p>
+<h3>Step 2: Download the Macro file</h3>
+<p>
+	Download the file from <a href="http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas">http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas</a>, by right clicking and saving the module. Save it on your Desktop.
+</p>
+<h3>Step 3: Import the Macro file</h3>
+<p>
+	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Visual Basic Editor</span>.
+</p><p>
+	In the Microsoft Visual Basic editor the starts, go to <span class="menu">File</span>, <span class="menu">Import File...</span>. Select the macro file you saved previously on your Destop named <tt>ReplyToAll.bas</tt>.
+</p><p>
+	Close the Microsoft Visual Basic editor.
+</p>
+<h3>Step 4: Add the buttons</h3>
+<p>
+	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Macros...</span>. Select the Macro <tt>ReplyToAll_AddButtons</tt> and hit <span class="menu">Run</span>.
+</p>
+<h3>Using Reply To All</h3>
+<p>
+	Now, in Outlook, click on a <span class="menu">Reply To All</span> button. The first time hitting <span class="menu">Reply To All</span> after starting Outlook you may get a security warning - if so just click <span class="menu">Enable Macros</span>.
+</p>
+
+    </body>
+</html>
