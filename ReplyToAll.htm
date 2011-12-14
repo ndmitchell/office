@@ -62,26 +62,26 @@ h3 {
 </p>
 
 <p style="margin-left:10%;margin-right:10%;margin-bottom:25px;text-align:justify;">
-    Some companies lock down the use of Outlook by disabling the Reply To All button. This makes it harder to manage email, and requires manually copying email addresses to get the same effect. But using a bit of Office VBA, it is possible to make a functioning Reply To All button. Also included are features to edit existing email (where this has also been disabled) and remove images embedded in an email.
+    Some companies lock down the use of Outlook by disabling the Reply To All button, making it harder to manage email. This document describes an associated Office VBA module, which restores the Reply To All button. The associated VBA also includes features to edit a received email (another feature sometimes disabled) and to remove embedded images from an email.
 </p>
 
 <h2>Enabling Reply To All</h2>
 <p>
-	The following steps describe how to recover Reply To All functionality. It has been tested in Outlook 2003 and 2007, but should work for other versions of Outlook as well.
+	The following steps describe how to recover Reply To All functionality. These steps has been tested on Outlook 2003 and 2007, but should also work for other versions of Outlook.
 </p>
 <h3>Step 1: Reduce your Outlook security settings</h3>
 <p>
-	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Security...</span>. On the dialog box, select Medium or Low security.
+	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Security...</span>. In the dialog box, select Medium or Low security.
 </p>
 <h3>Step 2: Download the Macro file</h3>
 <p>
-	Download the file from <a href="http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas">http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas</a>, by right clicking and saving the module. Save it on your Desktop.
+	Download the macro file from <a href="http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas">http://community.haskell.org/~ndm/darcs/office/ReplyToAll.bas</a>, by right clicking and saving the module. Save it on your Desktop.
 </p>
 <h3>Step 3: Import the Macro file</h3>
 <p>
 	In Outlook, go to <span class="menu">Tools</span>, <span class="menu">Macro</span>, <span class="menu">Visual Basic Editor</span>.
 </p><p>
-	In the Microsoft Visual Basic editor the starts, go to <span class="menu">File</span>, <span class="menu">Import File...</span>. Select the macro file you saved previously on your Destop named <tt>ReplyToAll.bas</tt>.
+	In the Microsoft Visual Basic editor go to <span class="menu">File</span>, <span class="menu">Import File...</span>. Select the macro file you saved previously on your Destop named <tt>ReplyToAll.bas</tt>.
 </p><p>
 	Close the Microsoft Visual Basic editor.
 </p>
@@ -91,7 +91,7 @@ h3 {
 </p>
 <h3>Using Reply To All</h3>
 <p>
-	Now, in Outlook, click on a <span class="menu">Reply To All</span> button. The first time hitting <span class="menu">Reply To All</span> after starting Outlook you may get a security warning - if so just click <span class="menu">Enable Macros</span>.
+	Now, in Outlook, click on a <span class="menu">Reply To All</span> button in the main window. The first time hitting <span class="menu">Reply To All</span> after starting Outlook you may get a security warning - if so just click <span class="menu">Enable Macros</span>.
 </p>
 
 <h2>Additional Features</h2>
@@ -100,25 +100,29 @@ h3 {
 </p>
 <ul>
 	<li><tt>EditMessage_Run</tt> - edit the currently selected message, useful for when companies have also disabled Edit Message.</li>
-	<li><tt>DeleteImages_Run</tt> - delete all inline images in a message, usually a substantial contributor to message size.</li>
+	<li><tt>DeleteImages_Run</tt> - delete all inline images from a message, which sometimes substantially reduces message size.</li>
 </ul>
 <p>
-	To use these macros, open a received email message. If you are using Office 2007, add them to the Quick Access Toolbar at the top of the screen. If you are using Office 2003, add them as custom toolbar buttons.
+	To use these macros, first open a received email message. If you are using Office 2007, add them to the Quick Access Toolbar at the top of the screen. If you are using Office 2003, add them as custom toolbar buttons.
 </p>
 
 <h2>Plea to Outlook Administrators</h2>
 <p>
-	Please do not disable essential email functionality. With the workarounds described above, the attempt is futile, but remains deeply inconvenient. Consider the situation where Alice sends an email to Bob, Charlie and Dave asking for some financial details of Mega Corp. Bob has the details on a post-it note on his desk and quicly replies to everyone with the information. But in a world without Reply To All...
+	Please do not disable essential email functionality. With the workarounds described above, the attempt is futile, but remains deeply inconvenient. Consider the situation where Alice sends an email to Bob, Charlie and Dave asking for some financial details of Mega Corp. Bob has the details on a post-it note on his desk and quickly replies to everyone with the information. But in a world without Reply To All...
 </p>
 <ul>
-	<li>Bob replies just to Alice. Charlie, being the helpful soul he his, decides to search through the filing cabinet. 15 minutes later Charlie finds the details and emails Alice, only to be told "Thanks, Bob answered this 15 minutes ago". Charlie  realises he just wasted 15 minutes of his life, and goes to get a cookie to make himself feel better.</li>
+	<li>Bob replies just to Alice. Charlie, being the helpful soul he is, decides to search through the filing cabinet for the information. 15 minutes later Charlie finds the details and emails Alice, only to be told "Thanks, Bob answered this 15 minutes ago". Charlie  realises he just wasted 15 minutes of his life, and goes to get a cookie to make himself feel better.</li>
 	<li>Bob replies just to Alice. At the end of the week Dave is reviewing his emails and realises that Alice still hasn't got a reply, but before he potentially wastes 15 minutes, he drops Alice an email - "Do you still want those details?". Alice replies "No". Dave concludes that he's a clever bunny for not going to the filing cabinet, and decides a one week latency when replying to Alice is just common sense.</li>
-	<li>Bob replies, but realising the potential cost of replying just to Alice, also replies to Charlie and Dave. Bob spent a minute retyping the recipient list, and wonders "Why can't Outlook has a have a button that does this for me?".</li>
+	<li>Bob replies, but realising the potential cost of replying just to Alice, also replies to Charlie and Dave. Bob spent a minute retyping the recipient list, and wonders "Why can't Outlook have a button that does this for me?".</li>
 	<li>Bob replies, also including Charles and Dave. Woops! That should have been Charlie, not Charles. As a best case scenario, Charles gets annoyed with a useless email, but at worst Charles brings down Mega Corp with the sensitive information gleaned from the email. Charlie still ends up going to get a cookie.</li>
 </ul>
 <p>
-	Removing Reply To All increases the volume of email required. The only justification is if you don't trust your staff to exercise basic judgement - in which case I suggest you remove their access to both email and your premises - since who knows what other damage they might do.
+	Removing Reply To All increases the volume of email required, and increases the risk of email accidents. I've heard only two arguments against Reply To All, both of which are wrong:
 </p>
+<ul>
+	<li>When Bob replies to everyone, the financial information about Mega Corp gets sent to Charlie, but what if Charlie shouldn't have access to that information? Of course, if Charlie shouldn't have access to that information then Alice was at fault for sending the request to Charlie in the first place. Bob should also check when sending sensitive information, but most emails are not sensitive (it is a poor default), checking the senders should not require retyping the senders (it is a poor user interface) and by default mailing lists are not fully expanded (so he won't be able to tell the full list of senders anyway).</li>
+	<li>When Zorg, the owner of Mega Corp, sends a Christmas email to all his employees, what if one of them hits Reply To All? That wastes a lot of company time, and should be prevented - but not on the client side. It is possible to restrict the number of recipients to an email, Zorg could send out the email with everyone in the BCC field, or IT could set up a mailing list which does not permit replies.</li>
+</ul>
 
     </body>
 </html>
