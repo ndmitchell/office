@@ -17,6 +17,30 @@ End If
 MsgBox "Cannot Reply to All when no mail items are selected"
 End Sub
 
+Public Sub EditMessage_Run()
+Dim o As Inspector
+Set o = Application.ActiveInspector()
+If Not o Is Nothing Then
+    o.WordEditor.UnProtect
+    Exit Sub
+End If
+MsgBox "Cannot Edit Message unless run from the a message window"
+End Sub
+
+Public Sub DeleteImages_Run()
+Dim o As Inspector
+Set o = Application.ActiveInspector()
+If Not o Is Nothing Then
+    o.WordEditor.UnProtect
+    Dim i As Object
+    For Each i In o.WordEditor.InlineShapes
+        i.Delete
+    Next
+    Exit Sub
+End If
+MsgBox "Cannot Delete Images unless run from the a message window"
+End Sub
+
 Public Sub ReplyToAll_AddButtons()
 ' For help on command buttons, see: http://support.microsoft.com/kb/201095
 'ReplyToAll_UnregisterButtons
