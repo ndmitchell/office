@@ -45,12 +45,20 @@ Public Sub ReplyToAll_AddButtons()
 ' For help on command buttons, see: http://support.microsoft.com/kb/201095
 'ReplyToAll_UnregisterButtons
 Dim bar As CommandBar
+Dim added As Integer: added = 0
 For Each bar In Application.ActiveExplorer.CommandBars
-    ReplyToAll_AddButtonsTo bar.Controls
+    ReplyToAll_AddButtonsTo added, bar.Controls
 Next
+If added = 0 Then
+    MsgBox "Failed to find any existing Reply To All buttons to replace, please add buttons manually", vbExclamation
+Else
+    Dim s As String
+    If added = 1 Then s = "" Else s = "s"
+    MsgBox "Replaced " & added & " ReplyToAll button" & s, vbInformation
+End If
 End Sub
 
-Private Sub ReplyToAll_AddButtonsTo(cs As CommandBarControls)
+Private Sub ReplyToAll_AddButtonsTo(ByRef added As Integer, cs As CommandBarControls)
 Dim i As Integer
 For i = 1 To cs.Count
     Dim c As CommandBarControl
@@ -58,10 +66,11 @@ For i = 1 To cs.Count
 
     If c.Type = msoControlPopup Then
         Dim cpop As CommandBarPopup: Set cpop = c
-        ReplyToAll_AddButtonsTo cpop.Controls
+        ReplyToAll_AddButtonsTo added, cpop.Controls
     ElseIf c.Type = msoControlButton Then
         Dim cbtn As CommandBarButton: Set cbtn = c
         If cbtn.ID = ReplyToAll_Id Then
+            added = added + 1
             cbtn.Visible = False
             
             If cbtn.Parent.Controls.Count > cbtn.Index Then
